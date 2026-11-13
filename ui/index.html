@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#fbfbfa" />
+<meta name="color-scheme" content="light" />
+<title>skillpr — review</title>
+<link rel="stylesheet" href="/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23fbfbfa'/><rect x='0.5' y='0.5' width='31' height='31' rx='6.5' fill='none' stroke='%23dcdcd9'/><path d='M9 12h6M9 20h9M18 12h5' stroke='%23171717' stroke-width='2.2' stroke-linecap='round'/></svg>" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to review</a>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" fill="none">
+        <path d="M2 4.5h4.5M2 11.5h7M9.5 4.5H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="wordmark">skillpr</span>
+    <span class="slash" aria-hidden="true">/</span>
+    <h1 class="skill-name" id="skillName">loading…</h1>
+    <span class="range" id="range"></span>
+  </div>
+
+  <div class="topmeta">
+    <div class="statline" id="statline"></div>
+    <span class="verdict-pill" id="verdictPill">
+      <span class="pill-icon" aria-hidden="true"></span>
+      <span id="verdictText">…</span>
+    </span>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="rail" aria-label="Changed files">
+    <div class="rail-head">
+      <span>Files</span>
+      <span class="count" id="fileCount">—</span>
+    </div>
+    <ul class="filelist" id="filelist"></ul>
+
+    <div class="rail-foot">
+      <div class="legend-block">
+        <div class="legend-title">Severity</div>
+        <ul class="legend">
+          <li><i class="dot high"></i> High — blocks</li>
+          <li><i class="dot med"></i> Medium — review</li>
+          <li><i class="dot low"></i> Low — note</li>
+        </ul>
+      </div>
+      <div class="keys">
+        <div><kbd>F</kbd> findings</div>
+        <div><kbd>D</kbd> diff</div>
+        <div><kbd>S</kbd> split view</div>
+      </div>
+    </div>
+  </aside>
+
+  <main id="main" tabindex="-1">
+    <section class="overview" aria-labelledby="ovTitle">
+      <h2 class="sr-only" id="ovTitle">Review summary</h2>
+      <div class="scorecard">
+        <div class="score-main">
+          <div class="score-num" id="scoreNum">—</div>
+          <div class="score-label">risk score</div>
+        </div>
+        <div class="score-bar" aria-hidden="true">
+          <div class="score-fill" id="scoreFill"></div>
+          <div class="score-tick" style="left:15%"></div>
+          <div class="score-tick" style="left:33%"></div>
+        </div>
+        <dl class="score-meta" id="scoreMeta"></dl>
+      </div>
+    </section>
+
+    <div class="tabs" role="tablist" aria-label="Review sections">
+      <button role="tab" id="tab-findings" aria-controls="panel-findings" aria-selected="true" class="tab active">
+        Findings <span class="badge" id="findingsBadge">0</span>
+      </button>
+      <button role="tab" id="tab-diff" aria-controls="panel-diff" aria-selected="false" class="tab">
+        Diff <span class="badge" id="diffBadge">0</span>
+      </button>
+      <div class="tab-spacer"></div>
+      <button class="ghost-btn" id="viewToggle" type="button" aria-pressed="false">Split view</button>
+    </div>
+
+    <section id="panel-findings" role="tabpanel" aria-labelledby="tab-findings" class="panel">
+      <div id="findingsList"></div>
+    </section>
+
+    <section id="panel-diff" role="tabpanel" aria-labelledby="tab-diff" class="panel" hidden>
+      <div id="diffList"></div>
+    </section>
+
+    <footer class="foot">
+      <p class="foot-strong">This shows what changed. It does not prove a skill is safe.</p>
+      <p id="limits"></p>
+    </footer>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>

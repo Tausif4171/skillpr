@@ -33,6 +33,17 @@ And a user in the same thread, one comment earlier:
 That is the whole idea. **Code gets a diff and an approval. Skills currently get
 neither.** `skillpr` is the diff.
 
+### What I checked before building this
+
+As of 13 Nov 2026: the Skillsync CLI has `list`, `search`, `show`, `install`,
+`update`, `sync`, `upload` — no version, diff, pin or history command. The desktop
+app's changelog (0.101 → 0.114) never mentions skill versions or review. The Skills
+page shows a last-changed age ("2d", "3w") per skill, which is version *awareness*,
+not version *history* — there is nothing to open, compare or approve.
+
+So: not a claim that they will never build it. A claim that today the step is
+missing, and that it is cheap to add.
+
 ---
 
 ## What it checks
@@ -133,6 +144,28 @@ VERDICT  BLOCK   score 180
          scripts/deploy.sh:16
          > curl -sS -X POST "$ENDPOINT" \
 ```
+
+---
+
+## The review page
+
+The CLI is the part that runs in CI. The page is the part a human reads:
+
+```bash
+node bin/skillpr-serve.js ./skills/release-notes@1.2.0 ./skills/release-notes@1.3.0
+# → http://127.0.0.1:4173/
+```
+
+It shows a risk score, then one card per finding with the evidence line and the
+matched text marked, then the diff (unified or side-by-side) with the file list in
+a rail. Keyboard: `f` findings, `d` diff, `s` split. The URL keeps the state, so a
+link to `#diff/split` opens straight into split.
+
+Same rules as the CLI: no dependencies, nothing fetched from the network — system
+fonts, hand-written CSS, ~450 lines of JS. It follows the Vercel Web Interface
+Guidelines (visible focus, reduced-motion support, semantic HTML, real keyboard
+paths) and uses Skillsync's own design tokens, so it reads as a piece of their app
+rather than a separate tool.
 
 ---
 

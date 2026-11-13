@@ -4,11 +4,16 @@
   "private": true,
   "type": "module",
   "description": "A pull request for agent skills: diff two versions of a skill folder and show what actually changed.",
-  "bin": { "skillpr": "./bin/skillpr.js" },
+  "bin": {
+    "skillpr": "./bin/skillpr.js"
+  },
   "scripts": {
     "test": "node --test",
-    "demo": "node bin/skillpr.js diff fixtures/release-notes/v1 fixtures/release-notes/v2"
+    "demo": "node bin/skillpr.js diff fixtures/release-notes/v1 fixtures/release-notes/v2",
+    "serve": "node bin/skillpr-serve.js fixtures/release-notes/v1 fixtures/release-notes/v2"
   },
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {}
 }
