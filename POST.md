@@ -11,6 +11,9 @@ Skillsync made skills hot-reload to your whole team.
 That means one person edits a SKILL.md at 11pm and every teammate's agent is
 running it by 11:01. No diff. No approval. No revert.
 
+I opened their skill page today to check I wasn't making this up. It has a cloud
+icon, an edit pencil and a delete bin. That's it. No history behind the pencil.
+
 Code gets a pull request. Skills get nothing.
 
 So I built `skillpr` — a diff and a risk verdict for two versions of a skill
@@ -44,6 +47,10 @@ Which is why this line, from Skillsync's HN launch, stuck with me:
 
 Great for your own folder. Risky for a shared team library — one edit reaches
 every teammate's agent, with no diff, no approval, no way to pin or revert.
+
+I checked before posting this. Their skill page shows the skill, the description,
+which agents have it, a cloud icon, an edit pencil and a delete bin. No history
+behind the pencil. An edit is final.
 
 A user in the same thread put it better than I could: *"figuring out when someone
 makes an update whether that's something that deserves human review… if skills are

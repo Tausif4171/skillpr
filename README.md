@@ -38,8 +38,9 @@ neither.** `skillpr` is the diff.
 As of 13 Nov 2026: the Skillsync CLI has `list`, `search`, `show`, `install`,
 `update`, `sync`, `upload` — no version, diff, pin or history command. The desktop
 app's changelog (0.101 → 0.114) never mentions skill versions or review. The Skills
-page shows a last-changed age ("2d", "3w") per skill, which is version *awareness*,
-not version *history* — there is nothing to open, compare or approve.
+page lists each skill with a last-changed age ("2d", "3w"). And the skill detail page
+is a rendered view of **one** version with a cloud icon, an edit pencil and a delete
+bin — no history, no compare, no revert. An edit is final.
 
 So: not a claim that they will never build it. A claim that today the step is
 missing, and that it is cheap to add.
@@ -160,6 +161,10 @@ It shows a risk score, then one card per finding with the evidence line and the
 matched text marked, then the diff (unified or side-by-side) with the file list in
 a rail. Keyboard: `f` findings, `d` diff, `s` split. The URL keeps the state, so a
 link to `#diff/split` opens straight into split.
+
+![Findings](docs/review-findings.png)
+
+![Split diff](docs/review-diff.png)
 
 Same rules as the CLI: no dependencies, nothing fetched from the network — system
 fonts, hand-written CSS, ~450 lines of JS. It follows the Vercel Web Interface
