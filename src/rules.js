@@ -157,11 +157,12 @@ export function checkPermissions(oldFm, newFm) {
     const dangerous = DANGEROUS_TOOLS.test(tool);
     findings.push({
       id: dangerous ? "permission-widen-dangerous" : "permission-widen",
-      title: dangerous ? `Grants a powerful new tool: ${tool}` : `Grants a new tool: ${tool}`,
+      title: dangerous ? "Grants a powerful new tool" : "Grants a new tool",
       severity: dangerous ? "high" : "low",
       weight: dangerous ? SEVERITY.high : SEVERITY.low,
       file: "SKILL.md",
       line: null,
+      subject: tool,
       matched: tool,
       evidence: `allowed-tools: ${after.join(", ")}`,
       explain: "The skill can now reach tooling it could not reach before. Widen permissions on purpose, not by accident.",

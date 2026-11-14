@@ -41,25 +41,43 @@ async function copy(text, label = "Copied") {
   }
 }
 
-/** Wrap the matched fragment inside the evidence line. */
+/** Wrap every matched fragment inside the evidence line. */
 function highlightEvidence(evidence, matched) {
   const text = String(evidence ?? "");
-  const needle = String(matched ?? "").replace(/…$/, "").trim();
-  if (!needle) return esc(text);
+  const needles = (Array.isArray(matched) ? matched : [matched])
+    .map((m) => String(m ?? "").replace(/…$/, "").trim())
+    .filter(Boolean);
+  if (!needles.length) return esc(text);
 
+  // Rules clip long matches with an ellipsis, so try shorter prefixes too.
   const hay = text.toLowerCase();
-  // Try the full match, then shrink — the rule clips long matches with an ellipsis.
-  for (const len of [needle.length, 40, 24, 12]) {
-    const n = needle.slice(0, len);
-    const idx = hay.indexOf(n.toLowerCase());
-    if (idx === -1) continue;
-    return (
-      esc(text.slice(0, idx)) +
-      "<mark>" + esc(text.slice(idx, idx + n.length)) + "</mark>" +
-      esc(text.slice(idx + n.length))
-    );
+  const ranges = [];
+  for (const needle of needles) {
+    for (const len of [needle.length, 40, 24, 12]) {
+      const probe = needle.slice(0, len).toLowerCase();
+      const idx = hay.indexOf(probe);
+      if (idx === -1) continue;
+      ranges.push([idx, idx + probe.length]);
+      break;
+    }
   }
-  return esc(text);
+  if (!ranges.length) return esc(text);
+
+  ranges.sort((a, b) => a[0] - b[0]);
+  const merged = [];
+  for (const r of ranges) {
+    const last = merged[merged.length - 1];
+    if (last && r[0] <= last[1]) last[1] = Math.max(last[1], r[1]);
+    else merged.push([...r]);
+  }
+
+  let out = "";
+  let at = 0;
+  for (const [start, end] of merged) {
+    out += esc(text.slice(at, start)) + "<mark>" + esc(text.slice(start, end)) + "</mark>";
+    at = end;
+  }
+  return out + esc(text.slice(at));
 }
 
 // ── render: header + rail ──────────────────────────────────
