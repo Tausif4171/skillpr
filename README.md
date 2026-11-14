@@ -25,8 +25,8 @@ teammate's agent before anyone has read it, and there is nothing to roll back to
 
 As of 13 Nov 2026, nothing I checked in the product shows a previous version:
 
-- The CLI has seven commands: `list`, `search`, `show`, `install`, `update`,
-  `sync`, `upload`. None of them compare two versions of a skill.
+- Their `skl skills` CLI has seven commands: `list`, `search`, `show`, `install`,
+  `update`, `sync`, `upload`. None of them compare two versions of a skill.
 - The desktop changelog (0.101 → 0.114, 11 entries) does not mention versions or
   review.
 - The skill page shows the skill, the agent it is enabled for, and its files.
