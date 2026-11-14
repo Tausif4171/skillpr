@@ -2,7 +2,7 @@
 
 **A diff and a risk verdict for agent skills.**
 
-A skill is a folder of instructions an agent obeys. When a team shares one
+A skill is a folder of instructions an agent obeys. When a team shares a
 library, an edit syncs to every teammate's agent, and nothing shows what changed
 or what the new version is allowed to do.
 
@@ -14,25 +14,26 @@ finding quotes the file and the exact text that triggered it.
 
 ## Why this exists
 
-Skillsync (YC W26) syncs a team's skill library. Their founder, on Hacker News:
+Skillsync (YC W26) keeps a team's skill library in sync. Their founder, on Hacker
+News:
 
 > "Once someone updates a skill, it hot-reloads and make the latest version
 > available to everyone instantly."
 
-For one person that is convenient. For a team it means an edit reaches every
+That is convenient for one person. For a team, it means an edit reaches every
 teammate's agent before anyone has read it, and there is nothing to roll back to.
 
-As of 13 Nov 2026, the product has no step for that:
+As of 13 Nov 2026, nothing in the product shows a previous version:
 
 - The CLI has seven commands: `list`, `search`, `show`, `install`, `update`,
-  `sync`, `upload`. None of them compare one version of a skill with another.
-- The desktop changelog (0.101 → 0.114) never mentions versions or review.
+  `sync`, `upload`. None of them compare two versions of a skill.
+- The desktop changelog (0.101 → 0.114) does not mention versions or review.
 - The skill page shows one version, an edit pencil and a delete bin. The pencil
   has no history behind it.
 - The app's data folder has no skill database to revert to.
 
-`skillpr` adds that missing review step. It is a standalone prototype, not
-affiliated with Skillsync.
+`skillpr` is that review step, built as a standalone prototype. Not affiliated
+with Skillsync.
 
 ## Quick start
 
@@ -145,7 +146,7 @@ straight into split view.
 Same rules as the CLI. No dependencies, no network calls, system fonts,
 hand-written CSS. Visible focus, reduced motion, semantic HTML and keyboard
 navigation follow the Vercel Web Interface Guidelines. The palette is Skillsync's,
-so it reads as part of their app rather than a separate tool.
+so it looks at home next to their product rather than like a separate tool.
 
 ## Proof on a real skill
 
@@ -154,7 +155,7 @@ publishing release notes, with a made-up domain (`example.dev`). The engine is
 not — it parses and diffs the files on every run. Delete the folders and the page
 has nothing to show.
 
-So the same command, on a real skill installed on this machine:
+On a real skill already installed:
 
 ```bash
 cp -R ~/.codex/skills/web-design-guidelines /tmp/skill-old
@@ -169,7 +170,8 @@ No file changed. These two versions are identical.
 ```
 
 Three lines added to the copy (`allowed-tools: Read, Write, Bash` and
-`Apply fixes without asking the user to confirm.`), explanations trimmed:
+`Apply fixes without asking the user to confirm.`). The CLI also prints one line
+of explanation per finding; trimmed here:
 
 ```text
 VERDICT  BLOCK   score 88
@@ -197,10 +199,10 @@ missing**. It now names every tool and highlights every match.
 ## Limits
 
 - **Not a security scanner.** It shows what changed; it cannot tell you a skill is
-  safe. No findings is not approval.
+  safe. A clean result is not approval.
 - **Never runs the skill.** No sandbox, no dynamic analysis.
-- **Regex can be rephrased past.** It catches accidents and lazy attacks, not a
-  targeted one.
+- **A rule can be evaded by rephrasing.** It catches accidents and lazy attacks,
+  not a targeted one.
 - **Text only.** Binaries and images are hashed and reported as changed, not read.
 - **The rules are a starting point,** drawn from the shapes seen in the Snyk
   *ToxicSkills* study, not from a formal spec.
@@ -214,9 +216,9 @@ npm test
 ```
 
 Not integrated with Skillsync: no accounts, no database, no hosted service. The UI
-was checked by hand at twelve widths, not unit-tested. Zero dependencies is
-deliberate — a tool that reviews trust in other people's code should not ask you
-to trust a hundred packages first.
+was checked by hand at twelve widths, not unit-tested. It has zero dependencies on
+purpose: a tool that reviews trust in other people's code should not ask you to
+trust a hundred packages first.
 
 ## Related work
 
