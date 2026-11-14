@@ -46,7 +46,8 @@ npm run demo    # review the bundled fixture pair
 npm run serve   # http://127.0.0.1:4173
 ```
 
-Node 20 or newer. No dependencies, no build step, nothing fetched at runtime.
+Node 20 or newer, tested on macOS. No dependencies, no build step, nothing fetched
+at runtime.
 
 ## Use it on your own skills
 
@@ -219,6 +220,8 @@ Not integrated with Skillsync: no accounts, no database, no hosted service. The 
 was checked by hand at twelve widths, not unit-tested. It has zero dependencies on
 purpose: a tool that reviews trust in other people's code should not ask you to
 trust a hundred packages first.
+
+Questions or bug reports: open an issue.
 
 ## Related work
 
