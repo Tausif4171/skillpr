@@ -143,9 +143,9 @@ straight into split view.
 ![Split diff view of the same skill](docs/review-diff.png)
 
 Same rules as the CLI. No dependencies, no network calls, system fonts,
-hand-written CSS. It follows the Vercel Web Interface Guidelines (visible focus,
-reduced-motion support, semantic HTML, real keyboard paths) and shares Skillsync's
-palette, so it reads as part of their app rather than a separate tool.
+hand-written CSS. Visible focus, reduced motion, semantic HTML and keyboard
+navigation follow the Vercel Web Interface Guidelines. The palette is Skillsync's,
+so it reads as part of their app rather than a separate tool.
 
 ## Proof on a real skill
 
