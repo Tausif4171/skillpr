@@ -14,25 +14,25 @@ finding quotes the file and the exact text that triggered it.
 
 ## Why this exists
 
-Skillsync (YC W26) syncs a team skill library. Their founder, on Hacker News:
+Skillsync (YC W26) syncs a team's skill library. Their founder, on Hacker News:
 
 > "Once someone updates a skill, it hot-reloads and make the latest version
 > available to everyone instantly."
 
-That is a good default for a personal folder. For a shared library it means one
-edit lands in every teammate's agent with no review step, and no way back.
+For one person that is convenient. For a team it means an edit reaches every
+teammate's agent before anyone has read it, and there is nothing to roll back to.
 
-What I checked on 13 Nov 2026:
+As of 13 Nov 2026, the product has no step for that:
 
-- The CLI has seven commands — `list`, `search`, `show`, `install`, `update`,
-  `sync`, `upload`. None of them look at a previous version.
-- The desktop changelog (0.101 → 0.114) never mentions skill versions or review.
-- The skill page renders one version, with an edit pencil and a delete bin. There
-  is no history to open; an edit is final.
-- The app's support folder has no local skill database to revert to.
+- The CLI has seven commands: `list`, `search`, `show`, `install`, `update`,
+  `sync`, `upload`. None of them compare one version of a skill with another.
+- The desktop changelog (0.101 → 0.114) never mentions versions or review.
+- The skill page shows one version, an edit pencil and a delete bin. The pencil
+  has no history behind it.
+- The app's data folder has no skill database to revert to.
 
-`skillpr` is that missing review step, built as a standalone prototype. It is not
-affiliated with Skillsync and makes no claim about their roadmap.
+`skillpr` adds that missing review step. It is a standalone prototype, not
+affiliated with Skillsync.
 
 ## Quick start
 
