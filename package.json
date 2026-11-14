@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A pull request for agent skills: diff two versions of a skill folder and show what actually changed.",
+  "description": "A diff and a risk verdict for agent skills: compare two versions of a skill folder.",
   "license": "MIT",
   "bin": {
     "skillpr": "./bin/skillpr.js"
