@@ -189,6 +189,8 @@ a { color: inherit; }
   border: 1px solid var(--border-strong);
   background: var(--bg-elev);
   color: var(--fg-muted);
+  cursor: default;
+  user-select: none;
 }
 
 .verdict-pill .pill-icon {
@@ -657,6 +659,24 @@ main {
 }
 .foot-strong { color: var(--fg-muted); margin: 0 0 4px; }
 .foot p { margin: 0; max-width: 76ch; }
+
+.foot .limits {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  max-width: 96ch;
+}
+.foot .limits li { position: relative; padding-left: 11px; }
+.foot .limits li::before {
+  content: "";
+  position: absolute; left: 0; top: 0.62em;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--fg-faint);
+}
 
 .toast {
   position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px);

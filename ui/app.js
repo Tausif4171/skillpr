@@ -76,6 +76,12 @@ function renderHeader(r) {
   pill.dataset.verdict = r.verdict;
   $("#verdictText").textContent = `${r.verdict} ${r.score}`;
 
+  const highs = r.findings.filter(f => f.severity === "high").length;
+  const meds = r.findings.filter(f => f.severity === "med").length;
+  pill.title =
+    `${highs} high, ${meds} medium · score ${r.score} of 200. ` +
+    "A summary, not a measurement — read the findings.";
+
   document.title = `${r.verdict} · ${r.newName} — skillpr`;
 }
 
@@ -126,7 +132,10 @@ function renderOverview(r) {
   $("#findingsBadge").textContent = String(r.findings.length);
   $("#diffBadge").textContent = String(r.diffs.length);
 
-  $("#limits").textContent = (r.limits || []).join(" ");
+  $("#limits").innerHTML = (r.limits || [])
+    .slice(1)
+    .map((line) => `<li>${esc(line)}</li>`)
+    .join("");
 }
 
 // ── render: findings ───────────────────────────────────────
