@@ -43,7 +43,7 @@ cd skillpr
 
 npm test        # 22 tests, no install step
 npm run demo    # review the bundled fixture pair
-npm run serve   # http://127.0.0.1:4173 (Ctrl+C stops it)
+npm run serve   # http://127.0.0.1:4173
 ```
 
 Node 20 or newer, tested on macOS. No dependencies, no build step, nothing fetched
