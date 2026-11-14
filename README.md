@@ -23,14 +23,14 @@ News:
 That is convenient for one person. For a team, it means an edit reaches every
 teammate's agent before anyone has read it, and there is nothing to roll back to.
 
-As of 13 Nov 2026, nothing in the product shows a previous version:
+As of 13 Nov 2026, nothing I checked in the product shows a previous version:
 
 - The CLI has seven commands: `list`, `search`, `show`, `install`, `update`,
   `sync`, `upload`. None of them compare two versions of a skill.
-- The desktop changelog (0.101 → 0.114) does not mention versions or review.
+- The desktop changelog (0.101 → 0.114, 11 entries) does not mention versions or
+  review.
 - The skill page shows the skill, the agent it is enabled for, and its files.
   Nothing on that page refers to a previous version.
-- The app's data folder has no skill database to revert to.
 
 `skillpr` is that review step, built as a standalone prototype. Not affiliated
 with Skillsync.
