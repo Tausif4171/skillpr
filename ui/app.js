@@ -89,6 +89,31 @@ function shortPath(p) {
     .replace(/^~\/$/, "~");
 }
 
+/**
+ * Two folders usually share almost the whole path. Drop the shared part and
+ * show only what differs: `~/w/skill/v1` + `~/w/skill/v2` → `v1 → v2`.
+ * The full paths stay in the tooltip.
+ */
+function shortPair(a, b) {
+  const left = shortPath(a).split("/");
+  const right = shortPath(b).split("/");
+
+  let i = 0;
+  while (i < left.length - 1 && i < right.length - 1 && left[i] === right[i]) i++;
+
+  const tail = (parts) => {
+    const rest = parts.slice(i);
+    // Leave nothing at all rather than one meaningless segment.
+    return rest.length > 3 ? `…/${rest.slice(-2).join("/")}` : rest.join("/");
+  };
+
+  // i < 2 means they share no real directory (only the root), so keep both whole.
+  if (i < 2 || !tail(left) || !tail(right)) {
+    return `${shortPath(a)} → ${shortPath(b)}`;
+  }
+  return `${tail(left)} → ${tail(right)}`;
+}
+
 function renderHeader(r) {
   $("#skillName").textContent = r.newName || r.oldName || "skill";
 
@@ -98,7 +123,7 @@ function renderHeader(r) {
     range.title = "";
   } else if (r.oldPath && r.newPath && r.oldPath !== r.newPath) {
     // Same skill name on both sides — name the folders being compared.
-    range.textContent = `${shortPath(r.oldPath)} → ${shortPath(r.newPath)}`;
+    range.textContent = shortPair(r.oldPath, r.newPath);
     range.title = `Comparing two folders:\nold: ${r.oldPath}\nnew: ${r.newPath}`;
   } else {
     range.textContent = "";
