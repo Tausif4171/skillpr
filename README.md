@@ -21,7 +21,8 @@ News:
 > available to everyone instantly."
 
 That is convenient for one person. For a team, it means an edit reaches every
-teammate's agent before anyone has read it, and there is nothing to roll back to.
+teammate's agent before anyone has reviewed it, and I found nothing to roll back
+to.
 
 As of 13 Nov 2026, nothing I checked in the product shows a previous version:
 
