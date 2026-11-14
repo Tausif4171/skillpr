@@ -28,8 +28,8 @@ As of 13 Nov 2026, nothing in the product shows a previous version:
 - The CLI has seven commands: `list`, `search`, `show`, `install`, `update`,
   `sync`, `upload`. None of them compare two versions of a skill.
 - The desktop changelog (0.101 → 0.114) does not mention versions or review.
-- The skill page shows one version, an edit pencil and a delete bin. The pencil
-  has no history behind it.
+- The skill page shows the skill, the agent it is enabled for, and its files.
+  Nothing on that page refers to a previous version.
 - The app's data folder has no skill database to revert to.
 
 `skillpr` is that review step, built as a standalone prototype. Not affiliated
@@ -170,9 +170,9 @@ VERDICT  CLEAN   score 0
 No file changed. These two versions are identical.
 ```
 
-Three lines added to the copy (`allowed-tools: Read, Write, Bash` and
-`Apply fixes without asking the user to confirm.`). The CLI also prints one line
-of explanation per finding; trimmed here:
+Three added lines: an `allowed-tools` line, a blank line, and a sentence telling
+the agent to stop asking for confirmation. The CLI also prints one line of
+explanation per finding; trimmed here:
 
 ```text
 VERDICT  BLOCK   score 88
