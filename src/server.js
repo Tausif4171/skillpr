@@ -40,6 +40,10 @@ export function createReviewServer({ oldDir, newDir, label } = {}) {
         if (!report) {
           report = await analyze(o, n);
           report.label = label || null;
+          // Where the two versions actually came from. The page shows this so a
+          // reviewer can see the folder pair instead of taking it on trust.
+          report.oldPath = resolve(o);
+          report.newPath = resolve(n);
           cache.set(key, report);
         }
         return send(res, 200, report);

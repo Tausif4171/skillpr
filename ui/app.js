@@ -82,9 +82,28 @@ function highlightEvidence(evidence, matched) {
 
 // ── render: header + rail ──────────────────────────────────
 
+/** `/Users/me/x` → `~/x` so the header stays short without hiding the source. */
+function shortPath(p) {
+  return String(p ?? "")
+    .replace(/^\/(?:Users|home)\/[^/]+/, "~")
+    .replace(/^~\/$/, "~");
+}
+
 function renderHeader(r) {
   $("#skillName").textContent = r.newName || r.oldName || "skill";
-  $("#range").textContent = r.oldName === r.newName ? "" : `${r.oldName} → ${r.newName}`;
+
+  const range = $("#range");
+  if (r.oldName !== r.newName) {
+    range.textContent = `${r.oldName} → ${r.newName}`;
+    range.title = "";
+  } else if (r.oldPath && r.newPath && r.oldPath !== r.newPath) {
+    // Same skill name on both sides — name the folders being compared.
+    range.textContent = `${shortPath(r.oldPath)} → ${shortPath(r.newPath)}`;
+    range.title = `Comparing two folders:\nold: ${r.oldPath}\nnew: ${r.newPath}`;
+  } else {
+    range.textContent = "";
+    range.title = "";
+  }
 
   const delta = r.stats.newBytes - r.stats.oldBytes;
   const filesTouched = r.files.added.length + r.files.removed.length + r.files.changed.length;

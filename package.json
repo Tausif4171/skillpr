@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "description": "A pull request for agent skills: diff two versions of a skill folder and show what actually changed.",
+  "license": "MIT",
   "bin": {
     "skillpr": "./bin/skillpr.js"
   },
