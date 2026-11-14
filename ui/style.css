@@ -526,7 +526,6 @@ main {
   font-size: 12.5px;
   line-height: 1.6;
   color: var(--fg-muted);
-  max-width: 74ch;
   text-wrap: pretty;
   overflow-wrap: break-word;
 }
